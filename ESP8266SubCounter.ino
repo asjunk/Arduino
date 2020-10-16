@@ -40,10 +40,10 @@ MD_Parola P = MD_Parola(HARDWARE_TYPE, DATA_PIN, CLK_PIN, CS_PIN, MAX_DEVICES);
 
 
 
-#define API_KEY "AIzaSyDk7y_uyBZ_xam7Qk3vcVwcoDFSh7ou274" //Your Youtube API-Key 
-#define CHANNEL_ID "UCjOq6p9z7vzQxLmew0nB7QA" // Your youtube channel ID. 
+#define API_KEY "*****" //Your Youtube API-Key 
+#define CHANNEL_ID "*****" // Your youtube channel ID. 
 
-String userName = "therealandyjunk"; // Your Instagram Username
+String userName = "*****"; // Your Instagram Username
 
 
 WiFiClientSecure client; //For ESP8266 boards
@@ -55,8 +55,8 @@ YoutubeApi api(API_KEY, client);
 // Configuration of router settings
 // =======================================================================
 
-const char* ssid     = "Newport Island";      // SSID of local network
-const char* password = "Parilla00";                // Password on network
+const char* ssid     = "*****";      // SSID of local network
+const char* password = "*****";                // Password on network
 
 void setup()
 {
