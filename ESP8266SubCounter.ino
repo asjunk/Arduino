@@ -1,3 +1,6 @@
+ 
+#include <SPI.h>
+
 
 
 // A Simple program to show Youtube & Instagram subscribers
@@ -16,7 +19,7 @@
 #include <ArduinoJson.h>
 
 #include "InstagramStats.h"
-#include <YoutubeApi.h>
+
 
 #include "theSwedishMaker.h"
 
@@ -27,7 +30,7 @@ const uint16_t WAIT_TIME = 6000; //Time between fecthing data.
 // Define the typ of hardware and the pins used.
 
 #define HARDWARE_TYPE MD_MAX72XX::FC16_HW
-#define MAX_DEVICES 4
+#define MAX_DEVICES 8
 
 #define CLK_PIN   12
 #define DATA_PIN  15
@@ -40,23 +43,22 @@ MD_Parola P = MD_Parola(HARDWARE_TYPE, DATA_PIN, CLK_PIN, CS_PIN, MAX_DEVICES);
 
 
 
-#define API_KEY "*****" //Your Youtube API-Key 
-#define CHANNEL_ID "*****" // Your youtube channel ID. 
+#define API_KEY "AIzaSyDk7y_uyBZ_xam7Qk3vcVwcoDFSh7ou274" //Your Youtube API-Key 
+#define CHANNEL_ID "UCjOq6p9z7vzQxLmew0nB7QA" // Your youtube channel ID. 
 
-String userName = "*****"; // Your Instagram Username
+String userName = "therealandyjunk"; // Your Instagram Username
 
 
 WiFiClientSecure client; //For ESP8266 boards
 InstagramStats instaStats(client);
 
-YoutubeApi api(API_KEY, client);
 
 // =======================================================================
 // Configuration of router settings
 // =======================================================================
 
-const char* ssid     = "*****";      // SSID of local network
-const char* password = "*****";                // Password on network
+const char* ssid     = "Newport Island";      // SSID of local network
+const char* password = "Parilla00";                // Password on network
 
 void setup()
 {
@@ -82,23 +84,21 @@ void loop(void)
 {
 
   Serial.println("Getting data ...");
-  P.print("fetching");
+  P.print("Do I have a billion?");
   int cnt = 0;
   //int yt1;
   long yt1, yt2, insta;
   while (1) {
     if (!cnt--) {
       cnt = 50;
-      if (api.getChannelStatistics(CHANNEL_ID))
-        yt1 = api.channelStats.subscriberCount;
-      yt2 = api.channelStats.viewCount;
+     
+    
       InstagramUserStats response = instaStats.getUserStats(userName);
       insta = response.followedByCount;
     }
 
     // FORMATO
-    String subsCount = num_format(yt1);
-    String viewCount = num_format(yt2);
+  
     String instaFollowers = num_format(insta);
 
     // PRINT
